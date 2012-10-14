@@ -117,6 +117,7 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_HAS_NO_MISC_PARTITION := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_RECOVERY_FSTAB := device/motorola/triumph/recovery.fstab
 
 #Kernel
 BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=triumph
