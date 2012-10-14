@@ -112,7 +112,7 @@ BOARD_HDPI_RECOVERY := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_USES_MMCUTILS := true
 BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/motorola/triumph/recovery/default_recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/motorola/triumph/recovery/recovery_ui.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/motorola/triumph/recovery/minui/graphics.c
 
 # Filesystem
