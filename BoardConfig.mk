@@ -105,16 +105,6 @@ TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/motorola/triumph/releasetools/triumph_img_from_target_files
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/motorola/triumph/releasetools/triumph_ota_from_target_files
 
-# Recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/motorola/triumph/recovery_kernel
-TARGET_RECOVERY_FSTAB := device/motorola/triumph/recovery.fstab
-BOARD_HDPI_RECOVERY := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_USES_MMCUTILS := true
-BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/motorola/triumph/recovery/recovery_ui.c
-BOARD_CUSTOM_GRAPHICS := ../../../device/motorola/triumph/recovery/minui/graphics.c
-
 # Filesystem
 BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p7
 BOARD_SYSTEM_FILESYSTEM := ext4
