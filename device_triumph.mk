@@ -1,82 +1,28 @@
+#
+# Copyright (C) 2011 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
+
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/motorola/triumph/triumph-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/triumph/overlay
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/motorola/triumph/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-# Build hdmid
-# include frameworks/base/cmds/hdmid/Android.mk
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-PRODUCT_PACKAGES += \
-    Gallery2 \
-    SpareParts \
-    Term \
-    LatinIME \
-    Mms \
-    Music \
-    Camera \
-    gps.triumph \
-    lights.triumph \
-    copybit.msm7x30 \
-    gralloc.msm7x30 \
-    hwcomposer.msm7x30 \
-    overlay.msm7x30 \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    audio_policy.msm7x30 \
-    audio.primary.msm7x30 \
-    audio.a2dp.default \
-    libaudioutils \
-    libtinyalsa
-
-# QCOM OMX
-PRODUCT_PACKAGES += \
-    libcamera \
-    libmm-omxcore \
-    libOmxCore \
-    libstagefrighthw \
-    libdivxdrmdecrypt \
-    liblasic \
-    libOmxVdec \
-    libOmxVenc \
-    libOmxVidEnc \
-    mm-vdec-omx-property-mgr \
-    mm-vdec-omx-test \
-    mm-venc-omx-test \
-    mm-video-driver-test \
-    mm-venc-omx-test720p \
-    mm-video-encdrv-test \
-    libomxaudio
-
-# Camera
-PRODUCT_PACKAGES += \
-    camera.msm7x30
-
-# HDMI
-PRODUCT_PACKAGES += \
-    hdmid
-
-# Init files
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/init.triumph.rc:root/init.triumph.rc \
-    device/motorola/triumph/ueventd.triumph.rc:root/ueventd.triumph.rc
-
-# Vold
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/vold.fstab:system/etc/vold.fstab
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -94,16 +40,17 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:/system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:/system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
-# init scripts
+# Common 7x30 firmware
 PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
-    device/motorola/triumph/files/etc/init.qcom.coex.sh:/system/etc/init.qcom.coex.sh\
-    device/motorola/triumph/files/etc/init.qcom.bt.sh:/system/etc/init.qcom.fm.sh \
-    device/motorola/triumph/files/etc/init.qcom.sdio.sf6.sh:/system/etc/init.qcom.sdio.sf6.sh \
-    device/motorola/triumph/files/etc/init.qcom.sdio.sh:/system/etc/init.qcom.sdio.sh \
-    device/motorola/triumph/files/etc/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh \
-    device/motorola/triumph/files/etc/init.apn.sh:/system/etc/init.apn.sh \
-    device/motorola/triumph/files/etc/telephony.sql:/system/etc/telephony.sql 
+    device/motorola/triumph/firmware/vidc_720p_command_control.fw:system/etc/firmware/vidc_720p_command_control.fw \
+    device/motorola/triumph/firmware/vidc_720p_h263_dec_mc.fw:system/etc/firmware/vidc_720p_h263_dec_mc.fw \
+    device/motorola/triumph/firmware/vidc_720p_h264_dec_mc.fw:system/etc/firmware/vidc_720p_h264_dec_mc.fw \
+    device/motorola/triumph/firmware/vidc_720p_h264_enc_mc.fw:system/etc/firmware/vidc_720p_h264_enc_mc.fw \
+    device/motorola/triumph/firmware/vidc_720p_mp4_dec_mc.fw:system/etc/firmware/vidc_720p_mp4_dec_mc.fw \
+    device/motorola/triumph/firmware/vidc_720p_mp4_enc_mc.fw:system/etc/firmware/vidc_720p_mp4_enc_mc.fw \
+    device/motorola/triumph/firmware/vidc_720p_vc1_dec_mc.fw:system/etc/firmware/vidc_720p_vc1_dec_mc.fw \
+    device/motorola/triumph/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    device/motorola/triumph/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
 # Keychars
 PRODUCT_COPY_FILES += \
@@ -129,15 +76,31 @@ PRODUCT_COPY_FILES += \
     device/motorola/triumph/keylayout/surf_keypad.kl:system/usr/keylayout/surf_keypad.kl \
     device/motorola/triumph/keylayout/Vendor_2378_Product_100a.kl:system/usr/keylayout/Vendor_2378_Product_100a.kl
 
-# Video firmware
+# Triumph Prebuilt Files
 PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_command_control.fw:/system/etc/firmware/vidc_720p_command_control.fw \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_h263_dec_mc.fw:/system/etc/firmware/vidc_720p_h263_dec_mc.fw \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_h264_dec_mc.fw:/system/etc/firmware/vidc_720p_h264_dec_mc.fw \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_h264_enc_mc.fw:/system/etc/firmware/vidc_720p_h264_enc_mc.fw \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_mp4_dec_mc.fw:/system/etc/firmware/vidc_720p_mp4_dec_mc.fw \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_mp4_enc_mc.fw:/system/etc/firmware/vidc_720p_mp4_enc_mc.fw \
-    device/motorola/triumph/files/etc/firmware/vidc_720p_vc1_dec_mc.fw:/system/etc/firmware/vidc_720p_vc1_dec_mc.fw
+    device/motorola/triumph/prebuilt/08hostapd:/system/etc/init.d/08hostapd \
+    device/motorola/triumph/prebuilt/100complete:/system/etc/init.d/100complete \
+    device/motorola/triumph/prebuilt/loc_parameter.ini:system/etc/loc_parameter.ini \
+    device/motorola/triumph/prebuilt/gps.conf:/system/etc/gps.conf \
+    device/motorola/triumph/prebuilt/SuplRootCert:/system/etc/SuplRootCert \
+    device/motorola/triumph/prebuilt/apns-conf.xml:system/etc/apns-conf.xml \
+    device/motorola/triumph/prebuilt/bi041p.idc:/system/usr/idc/bi041p.idc \
+    device/motorola/triumph/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
+
+# Triumph init scripts
+PRODUCT_COPY_FILES += \
+    device/motorola/triumph/prebuilt/init.triumph.usb.rc:root/init.triumph.usb.rc \
+    device/motorola/triumph/prebuilt/init.triumph.rc:root/init.triumph.rc \
+    device/motorola/triumph/prebuilt/ueventd.triumph.rc:root/ueventd.triumph.rc \
+    device/motorola/triumph/prebuilt/vold.fstab:system/etc/vold.fstab \
+    device/motorola/triumph/prebuilt/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
+    device/motorola/triumph/prebuilt/init.qcom.coex.sh:/system/etc/init.qcom.coex.sh\
+    device/motorola/triumph/prebuilt/init.qcom.bt.sh:/system/etc/init.qcom.fm.sh \
+    device/motorola/triumph/prebuilt/init.qcom.sdio.sf6.sh:/system/etc/init.qcom.sdio.sf6.sh \
+    device/motorola/triumph/prebuilt/init.qcom.sdio.sh:/system/etc/init.qcom.sdio.sh \
+    device/motorola/triumph/prebuilt/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh \
+    device/motorola/triumph/prebuilt/init.apn.sh:/system/etc/init.apn.sh \
+    device/motorola/triumph/prebuilt/telephony.sql:/system/etc/telephony.sql 
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -145,39 +108,72 @@ PRODUCT_COPY_FILES += \
     device/motorola/triumph/modules/librasdioif.ko:/system/lib/modules/librasdioif.ko \
     device/motorola/triumph/modules/libra_ftm.ko:/system/lib/modules/libra_ftm.ko \
     device/motorola/triumph/modules/cifs.ko:/system/lib/modules/cifs.ko \
-    device/motorola/triumph/files/etc/firmware/wlan/qcom_fw.bin:/system/etc/firmware/wlan/qcom_fw.bin \
-    device/motorola/triumph/files/etc/firmware/wlan/qcom_wapi_fw.bin:/system/etc/firmware/wlan/qcom_wapi_fw.bin \
-    device/motorola/triumph/files/etc/firmware/wlan/qcom_wlan_nv.bin:/system/etc/firmware/wlan/qcom_wlan_nv.bin \
-    device/motorola/triumph/files/etc/firmware/wlan/cfg.dat:/system/etc/firmware/wlan/cfg.dat \
-    device/motorola/triumph/files/etc/firmware/wlan/hostapd_default.conf:/system/etc/firmware/wlan/hostapd_default.conf \
-    device/motorola/triumph/files/etc/firmware/wlan/qcom_cfg.ini:/system/etc/firmware/wlan/qcom_cfg.ini \
-    device/motorola/triumph/files/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf
+    device/motorola/triumph/firmware/wlan/qcom_fw.bin:/system/etc/firmware/wlan/qcom_fw.bin \
+    device/motorola/triumph/firmware/wlan/qcom_wapi_fw.bin:/system/etc/firmware/wlan/qcom_wapi_fw.bin \
+    device/motorola/triumph/firmware/wlan/qcom_wlan_nv.bin:/system/etc/firmware/wlan/qcom_wlan_nv.bin \
+    device/motorola/triumph/firmware/wlan/cfg.dat:/system/etc/firmware/wlan/cfg.dat \
+    device/motorola/triumph/firmware/wlan/hostapd_default.conf:/system/etc/firmware/wlan/hostapd_default.conf \
+    device/motorola/triumph/firmware/wlan/qcom_cfg.ini:/system/etc/firmware/wlan/qcom_cfg.ini \
+    device/motorola/triumph/firmware/wlan/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf
 
-# Hostapd
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/init.d/08hostapd:/system/etc/init.d/08hostapd \
+# Sensors, GPS, Lights
+PRODUCT_PACKAGES += \
+    gps.triumph \
+    lights.triumph \
+    senors.triumph
 
-# GPS
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/loc_parameter.ini:system/etc/loc_parameter.ini \
-    device/motorola/triumph/files/etc/gps.conf:/system/etc/gps.conf \
-    device/motorola/triumph/files/etc/SuplRootCert:/system/etc/SuplRootCert
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio_policy.msm7x30 \
+    audio.primary.msm7x30 \
+    libaudioutils
 
-# APN
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/apns-conf.xml:system/etc/apns-conf.xml
+# Video
+PRODUCT_PACKAGES += \
+    copybit.msm7x30 \
+    gralloc.msm7x30 \
+    hwcomposer.msm7x30 \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libQcomUI \
+    libtilerenderer
 
-# Touchscreen
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/usr/idc/bi041p.idc:/system/usr/idc/bi041p.idc
+# QCOM OMX
+PRODUCT_PACKAGES += \
+    libstagefrighthw \
+    libOmxCore \
+    libmm-omxcore \
+    libdivxdrmdecrypt \
+    libOmxVdec \
+    libOmxVenc
 
-# Xml config
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/media_profiles.xml:system/etc/media_profiles.xml
+# Misc
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
+    Torch
 
-# Init.d task management
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/files/etc/init.d/100complete:/system/etc/init.d/100complete
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    librs_jni
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm7x30
+
+# HDMI
+PRODUCT_PACKAGES += \
+    hdmid
+
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number

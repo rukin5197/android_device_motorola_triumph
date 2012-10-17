@@ -123,7 +123,7 @@ TARGET_RECOVERY_FSTAB := device/motorola/triumph/recovery.fstab
 BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=triumph
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_PREBUILT_KERNEL := device/motorola/triumph/kernel
+TARGET_PREBUILT_KERNEL := device/motorola/triumph/prebuilt/kernel
 
 #File System
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
