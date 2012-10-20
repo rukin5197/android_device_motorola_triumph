@@ -81,7 +81,7 @@ BOARD_VENDOR_QCOM_GPS_HAS_BROKEN_XTRA := true
 BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
 
 # HDMI
-TARGET_QCOM_HDMI_RESOLUTION_AUTO := true
+TARGET_QCOM_HDMI_OUT := true
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
@@ -109,6 +109,8 @@ WIFI_EXT_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
 WIFI_EXT_MODULE_NAME := "librasdioif"
 WIFI_PRE_LOADER := "qcom_sdio_init"
 WIFI_POST_UNLOADER := "qcom_sdio_deinit"
+BOARD_WEXT_NO_COMBO_SCAN := true
+WPA_BUILD_SUPPLICANT := true
 
 # Set insecure for root access
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0

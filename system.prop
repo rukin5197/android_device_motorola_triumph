@@ -47,6 +47,7 @@ ro.telephony.gsm.spn.shortname=true
 ro.cdma.home.operator.numeric=310053
 
 wifi.interface=wlan0
+wlan.driver.status=ok
 wifi.supplicant_scan_interval=90
 wifi.supplicant_no_update_ctrl=true
 
