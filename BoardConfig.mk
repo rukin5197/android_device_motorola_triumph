@@ -99,9 +99,8 @@ TARGET_NO_BYPASS_CROPPING := true
 BOARD_EGL_CFG := vendor/motorola/triumph/system/lib/egl/egl.cfg
 
 # Wifi
-WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
+WPA_SUPPLICANT_VERSION := VER_0_6_X
 BOARD_WLAN_DEVICE := libra
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/libra.ko"
 WIFI_DRIVER_MODULE_NAME := "libra"
