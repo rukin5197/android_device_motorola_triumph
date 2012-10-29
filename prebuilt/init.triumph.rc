@@ -262,13 +262,21 @@ service gpsone_daemon /system/bin/gpsone_daemon
 #    disabled
 #    oneshot
 
-service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p14 /dev/block/mmcblk0p15
-    class main
-    user root
-    disabled
+service rmt_storage / system / bin / rmt_storage / dev/block/mmcblk0p10 / dev/block/mmcblk0p11
+     user root
+     disabled 
 
-on property:ro.emmc=1
-    start rmt_storage
+# rmt_storage from Sharp 2.3.5 (Ware our file originates)
+#Div2-SW2-BSP,JOE HSU,change EFS partition
+#service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/#mmcblk0p11 /dev/block/mmcblk0p17
+#service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/#mmcblk0p14 /dev/block/mmcblk0p15
+#    user root
+#    disabled
+
+#Old rmt_storage
+#service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p14 /dev/block/#mmcblk0p15
+#   user root
+#   disabled
 
 service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
     class main
@@ -427,3 +435,9 @@ on property:sys.usb.config=mass_storage,rndis,adb
     write /sys/class/usb_composite/adb/enable 1
     start adbd
     setprop sys.usb.state $sys.usb.config
+
+    #WeiChihChen let rmt_storage running
+    setprop ro.emmc 1
+
+on property:ro.emmc=1
+    start rmt_storage
