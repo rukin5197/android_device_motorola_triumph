@@ -24,9 +24,9 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-#######   for use when building CyanogenMod
-USE_CAMERA_STUB := false
-#######
+# This variable is set first, so it can be overridden
+# by BoardConfigVendor.mk
+USE_CAMERA_STUB := true
 
 # Call headers from msm-3.0: needed to build libs in hardware/qcom/display
 TARGET_SPECIFIC_HEADER_PATH := device/motorola/triumph/include
@@ -53,8 +53,8 @@ ARCH_ARM_HAVE_ARMV7A_BUG := true
 ARCH_ARM_HAVE_NEON := true
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
-# 2G split
-TARGET_USES_2G_VM_SPLIT := true
+# 3G split
+TARGET_USES_3G_VM_SPLIT := true
 TARGET_USES_OLD_LIBSENSORS_HAL := true
 
 # QCOM
@@ -87,15 +87,16 @@ TARGET_QCOM_HDMI_OUT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 # Video
+BOARD_USES_ADRENO_200 := true
 USE_OPENGL_RENDERER := true
-TARGET_USE_OVERLAY      := false
-TARGET_HAVE_BYPASS      := false
-TARGET_USES_C2D_COMPOSITION := false
-TARGET_USES_GENLOCK := true
-TARGET_GRALLOC_USES_ASHMEM := true
 TARGET_FORCE_CPU_UPLOAD := true
-COMMON_GLOBAL_CFLAGS += -DMISSING_GRALLOC_BUFFERS -DREFRESH_RATE=60 -DQCOM_HARDWARE -DBINDER_COMPAT
-TARGET_NO_BYPASS_CROPPING := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_QCOM_HDMI_OUT := false
+TARGET_USES_OVERLAY := false
+TARGET_USES_GENLOCK := true
+TARGET_USES_SF_BYPASS := false
+TARGET_GRALLOC_USES_ASHMEM := true
+COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_HARDWARE
 BOARD_EGL_CFG := vendor/motorola/triumph/system/lib/egl/egl.cfg
 
 # Wifi
