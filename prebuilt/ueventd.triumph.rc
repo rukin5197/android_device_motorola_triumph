@@ -41,7 +41,7 @@
 /dev/pmem                 0660   system     graphics
 /dev/pmem_audio           0660   system     audio
 /dev/pmem_adsp*           0660   system     audio
-/dev/pmem_smipool*        0660   system     camera
+/dev/pmem_smipool*        0666   system     camera
 /dev/pmem_camera*         0660   system     camera
 #div6-d1-JL-FixGpsRpc{
 #/dev/oncrpc/*             0660   root       qcom_oncrpc
@@ -208,7 +208,7 @@
 /dev/msm_pcm_lp_dec     0660    system      audio
 /dev/pmem               0660    system      graphics
 /dev/pmem_audio         0660    system      audio
-/dev/pmem_adsp*         0660    system      audio
+/dev/pmem_adsp*         0666    system      audio
 /dev/adsp/*             0660    system      audio
 /dev/snd/*              0660    system      audio
 /dev/msm_pcm_out*       0660    system      audio
