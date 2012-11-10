@@ -81,14 +81,10 @@ BOARD_GPS_LIBRARIES := libcommondefs\
   libloc \
   libloc_api \
   libloc_ext \
-  libloc-rpc \
-  libgps
+  libloc-rpc
 
 # HDMI
 TARGET_QCOM_HDMI_OUT := true
-
-# Sensor
-TARGET_USES_OLD_LIBSENSORS_HAL := true
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
