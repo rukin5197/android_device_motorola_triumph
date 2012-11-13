@@ -26,6 +26,7 @@ DEVICE_PACKAGE_OVERLAYS += device/motorola/triumph/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
+    frameworks/base/data/etc/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml \
     frameworks/base/data/etc/handheld_core_hardware.xml:/system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:/system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
