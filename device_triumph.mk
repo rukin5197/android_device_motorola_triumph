@@ -169,12 +169,12 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm7x30
+    camera.msm7x30 \
+    camtest
 
 # HDMI
 PRODUCT_PACKAGES += \
     hdmid
-
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
