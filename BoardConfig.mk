@@ -85,6 +85,14 @@ BOARD_GPS_LIBRARIES := libcommondefs\
 # HDMI
 TARGET_QCOM_HDMI_OUT := true
 
+# Legacy
+COMMON_GLOBAL_CFLAGS += -DUSES_LEGACY_GRAPHICS
+BOARD_USES_LEGACY_GRAPHICS := true
+
+# Testing
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+TARGET_NO_HW_VSYNC := true
+
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
@@ -138,9 +146,7 @@ TARGET_RECOVERY_FSTAB := device/motorola/triumph/recovery.fstab
 BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=triumph
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
-BUILD_KERNEL := true
-TARGET_KERNEL_CONFIG := triumph_defconfig
-TARGET_KERNEL_SOURCE := kernel/motorola/triumph
+TARGET_PREBUILT_KERNEL := device/motorola/triumph/prebuilt/kernel
 
 #File System
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608

@@ -17,6 +17,8 @@
 
 // #define LOG_NDEBUG 0
 #define LOG_TAG "lights"
+#define LOGD
+#define LOGE
 
 #include <cutils/log.h>
 
