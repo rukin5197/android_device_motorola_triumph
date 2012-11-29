@@ -104,12 +104,13 @@ PRODUCT_COPY_FILES += \
     device/motorola/triumph/prebuilt/init.apn.sh:/system/etc/init.apn.sh \
     device/motorola/triumph/prebuilt/telephony.sql:/system/etc/telephony.sql 
 
-# Wifi
+# Wifi/Modules
 PRODUCT_COPY_FILES += \
     device/motorola/triumph/modules/libra.ko:/system/lib/modules/libra.ko \
     device/motorola/triumph/modules/librasdioif.ko:/system/lib/modules/librasdioif.ko \
     device/motorola/triumph/modules/libra_ftm.ko:/system/lib/modules/libra_ftm.ko \
     device/motorola/triumph/modules/cifs.ko:/system/lib/modules/cifs.ko \
+    device/motorola/triumph/modules/tun.ko:/system/lib/modules/tun.ko \
     device/motorola/triumph/firmware/wlan/qcom_fw.bin:/system/etc/firmware/wlan/qcom_fw.bin \
     device/motorola/triumph/firmware/wlan/qcom_wapi_fw.bin:/system/etc/firmware/wlan/qcom_wapi_fw.bin \
     device/motorola/triumph/firmware/wlan/qcom_wlan_nv.bin:/system/etc/firmware/wlan/qcom_wlan_nv.bin \
@@ -122,7 +123,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     gps.triumph \
     lights.triumph \
-    senors.triumph
+    sensors.triumph
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -170,7 +171,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm7x30
+    camera.msm7x30 \
+    camtest \
+    libcamera2
 
 # HDMI
 PRODUCT_PACKAGES += \
