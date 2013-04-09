@@ -92,7 +92,10 @@
 #define AUDIO_GET_ACDB_BLK _IOW(AUDIO_IOCTL_MAGIC, 96,  \
 					struct msm_acdb_cmd_device)
 
-#define FM_CODECSETTING _IOR(AUDIO_IOCTL_MAGIC, 97, unsigned)//MM-RC-ChangeFMPath-00+
+#define AUDIO_REGISTER_ION _IOW(AUDIO_IOCTL_MAGIC, 97, unsigned)
+#define AUDIO_DEREGISTER_ION _IOW(AUDIO_IOCTL_MAGIC, 98, unsigned)
+#define FM_CODECSETTING _IOR(AUDIO_IOCTL_MAGIC, 99, unsigned)//MM-RC-ChangeFMPath-00+
+#define GET_DUAL_MIC_SETTING _IOR(AUDIO_IOCTL_MAGIC, 100, unsigned)//MM-RC-DualMicOrNot-00+
 
 #define	AUDIO_MAX_COMMON_IOCTL_NUM	100
 
@@ -168,6 +171,11 @@ struct msm_audio_stats {
 	uint32_t byte_count;
 	uint32_t sample_count;
 	uint32_t unused[2];
+};
+
+struct msm_audio_ion_info {
+	int fd;
+	void *vaddr;
 };
 
 struct msm_audio_pmem_info {

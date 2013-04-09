@@ -20,117 +20,29 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_small.mk)
 
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
+
 $(call inherit-product-if-exists, vendor/motorola/triumph/triumph-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/triumph/overlay
 
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml \
-    frameworks/base/data/etc/handheld_core_hardware.xml:/system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:/system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:/system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/base/data/etc/android.hardware.camera.front.xml:/system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/base/data/etc/android.hardware.camera.xml:/system/etc/permissions/android.hardware.camera.xml \
-    frameworks/base/data/etc/android.hardware.location.gps.xml:/system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:/system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:/system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.compass.xml:/system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:/system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:/system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:/system/etc/permissions/android.hardware.touchscreen.multitouch.xml
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    librs_jni
 
-# Common 7x30 firmware
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/firmware/vidc_720p_command_control.fw:system/etc/firmware/vidc_720p_command_control.fw \
-    device/motorola/triumph/firmware/vidc_720p_h263_dec_mc.fw:system/etc/firmware/vidc_720p_h263_dec_mc.fw \
-    device/motorola/triumph/firmware/vidc_720p_h264_dec_mc.fw:system/etc/firmware/vidc_720p_h264_dec_mc.fw \
-    device/motorola/triumph/firmware/vidc_720p_h264_enc_mc.fw:system/etc/firmware/vidc_720p_h264_enc_mc.fw \
-    device/motorola/triumph/firmware/vidc_720p_mp4_dec_mc.fw:system/etc/firmware/vidc_720p_mp4_dec_mc.fw \
-    device/motorola/triumph/firmware/vidc_720p_mp4_enc_mc.fw:system/etc/firmware/vidc_720p_mp4_enc_mc.fw \
-    device/motorola/triumph/firmware/vidc_720p_vc1_dec_mc.fw:system/etc/firmware/vidc_720p_vc1_dec_mc.fw \
-    device/motorola/triumph/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/motorola/triumph/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
-
-# Keychars
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/keychars/fih_headsethook.kcm.bin:system/usr/keychars/fih_headsethook.kcm.bin \
-    device/motorola/triumph/keychars/fih_ringswitch.kcm.bin:system/usr/keychars/fih_ringswitch.kcm.bin \
-    device/motorola/triumph/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-    device/motorola/triumph/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/motorola/triumph/keychars/sf6_kybd.kcm.bin:system/usr/keychars/sf6_kybd.kcm.bin \
-    device/motorola/triumph/keychars/sf8_kybd.kcm.bin:system/usr/keychars/sf8_kybd.kcm.bin \
-    device/motorola/triumph/keychars/surf_keypad.kcm.bin:system/usr/keychars/surf_keypad.kcm.bin \
-    device/motorola/triumph/keychars/surf_keypad_qwerty.kcm.bin:system/usr/keychars/surf_keypad_qwerty.kcm.bin \
-    device/motorola/triumph/keychars/surf_keypad_numeric.kcm.bin:system/usr/keychars/surf_keypad_numeric.kcm.bin
-
-# Keylayouts
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/keylayout/fih_headsethook.kl:system/usr/keylayout/fih_headsethook.kl \
-    device/motorola/triumph/keylayout/fih_ringswitch.kl:system/usr/keylayout/fih_ringswitch.kl \
-    device/motorola/triumph/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/motorola/triumph/keylayout/bi041p.kl:system/usr/keylayout/bi041p.kl \
-    device/motorola/triumph/keylayout/fbx_kybd.kl:system/usr/keylayout/fbx_kybd.kl \
-    device/motorola/triumph/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/motorola/triumph/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-    device/motorola/triumph/keylayout/surf_keypad.kl:system/usr/keylayout/surf_keypad.kl \
-    device/motorola/triumph/keylayout/Vendor_2378_Product_100a.kl:system/usr/keylayout/Vendor_2378_Product_100a.kl
-
-# Triumph Prebuilt Files
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/prebuilt/08hostapd:/system/etc/init.d/08hostapd \
-    device/motorola/triumph/prebuilt/100complete:/system/etc/init.d/100complete \
-    device/motorola/triumph/prebuilt/loc_parameter.ini:system/etc/loc_parameter.ini \
-    device/motorola/triumph/prebuilt/gps.conf:/system/etc/gps.conf \
-    device/motorola/triumph/prebuilt/SuplRootCert:/system/etc/SuplRootCert \
-    device/motorola/triumph/prebuilt/apns-conf.xml:system/etc/apns-conf.xml \
-    device/motorola/triumph/prebuilt/bi041p.idc:/system/usr/idc/bi041p.idc \
-    device/motorola/triumph/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
-
-# Triumph init scripts
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/prebuilt/init.triumph.usb.rc:root/init.triumph.usb.rc \
-    device/motorola/triumph/prebuilt/init.triumph.rc:root/init.triumph.rc \
-    device/motorola/triumph/prebuilt/ueventd.triumph.rc:root/ueventd.triumph.rc \
-    device/motorola/triumph/prebuilt/vold.fstab:system/etc/vold.fstab \
-    device/motorola/triumph/prebuilt/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
-    device/motorola/triumph/prebuilt/init.qcom.coex.sh:/system/etc/init.qcom.coex.sh\
-    device/motorola/triumph/prebuilt/init.qcom.bt.sh:/system/etc/init.qcom.fm.sh \
-    device/motorola/triumph/prebuilt/init.qcom.sdio.sf6.sh:/system/etc/init.qcom.sdio.sf6.sh \
-    device/motorola/triumph/prebuilt/init.qcom.sdio.sh:/system/etc/init.qcom.sdio.sh \
-    device/motorola/triumph/prebuilt/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh \
-    device/motorola/triumph/prebuilt/init.apn.sh:/system/etc/init.apn.sh \
-    device/motorola/triumph/prebuilt/telephony.sql:/system/etc/telephony.sql 
-
-# Wifi/Modules
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/modules/libra.ko:/system/lib/modules/libra.ko \
-    device/motorola/triumph/modules/librasdioif.ko:/system/lib/modules/librasdioif.ko \
-    device/motorola/triumph/modules/libra_ftm.ko:/system/lib/modules/libra_ftm.ko \
-    device/motorola/triumph/modules/cifs.ko:/system/lib/modules/cifs.ko \
-    device/motorola/triumph/modules/tun.ko:/system/lib/modules/tun.ko \
-    device/motorola/triumph/firmware/wlan/qcom_fw.bin:/system/etc/firmware/wlan/qcom_fw.bin \
-    device/motorola/triumph/firmware/wlan/qcom_wapi_fw.bin:/system/etc/firmware/wlan/qcom_wapi_fw.bin \
-    device/motorola/triumph/firmware/wlan/qcom_wlan_nv.bin:/system/etc/firmware/wlan/qcom_wlan_nv.bin \
-    device/motorola/triumph/firmware/wlan/cfg.dat:/system/etc/firmware/wlan/cfg.dat \
-    device/motorola/triumph/firmware/wlan/hostapd_default.conf:/system/etc/firmware/wlan/hostapd_default.conf \
-    device/motorola/triumph/firmware/wlan/qcom_cfg.ini:/system/etc/firmware/wlan/qcom_cfg.ini \
-    device/motorola/triumph/firmware/wlan/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
 
 # Sensors, GPS, Lights
 PRODUCT_PACKAGES += \
     gps.triumph \
     lights.triumph \
     senors.triumph
-
-# Audio
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio_policy.msm7x30 \
-    audio.primary.msm7x30 \
-    libaudioutils \
-    libtinyalsa
 
 # Video
 PRODUCT_PACKAGES += \
@@ -143,6 +55,20 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libQcomUI \
     libtilerenderer
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio_policy.msm7x30 \
+    audio.primary.msm7x30 \
+    libaudioutils \
+    libtinyalsa
+
+# Misc
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
+    Torch \
+    CMFileManager
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
@@ -161,40 +87,75 @@ PRODUCT_PACKAGES += \
     mm-video-driver-test \
     mm-venc-omx-test720p \
     mm-video-encdrv-test \
+    mm-abl-test \
+    mm-adec-omxaac-test \
+    mm-adec-omxadpcm-test \
+    mm-adec-omxamr-test \
+    mm-adec-omxamrwb-test \
+    mm-adec-omxevrc-test \
+    mm-adec-omxmp3-test \
+    mm-adec-omxQcelp13-test \
+    mm-adec-omxwma-test \
+    mm-adspsvc-test \
+    mm-aenc-omxaac-test \
+    mm-aenc-omxamr-test \
+    mm-aenc-omxevrc-test \
+    mm-aenc-omxqcelp13-test \
+    mm-audio-alsa-test \
+    mm-audio-ctrl-test \
+    mm-audio-mvs-test-ext \
+    mm-audio-mvs-test-int \
+    mm-audio-native-test \
+    mm-audio-voem_if-test \
+    mm-jpeg-dec-test \
+    mm-jpeg-enc-test \
+    mm-omx-devmgr \
+    mm-qcamera-test \
+    mm-qcamera-testsuite-client \
     libomxaudio
-
-# Misc
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    Torch \
-    CMFileManager
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm7x30 \
-    libcamera2
-
-# Gsensor & Ecompass
-PRODUCT_COPY_FILES += \
-    device/motorola/triumph/prebuilt/app/ECompassCalibration.apk:/system/app/ECompassCalibration.apk \
-    device/motorola/triumph/prebuilt/app/GSensorCalibration.apk:/system/app/GSensorCalibration.apk
+    camera.msm7x30
 
 # HDMI
 PRODUCT_PACKAGES += \
     hdmid
+# Build hdmid
+ include frameworks/base/cmds/hdmid/Android.mk
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/etc/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml \
+    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+# Triumph init scripts
+PRODUCT_COPY_FILES += \
+    device/motorola/triumph/prebuilt/init.triumph.usb.rc:root/init.triumph.usb.rc \
+    device/motorola/triumph/prebuilt/init.triumph.rc:root/init.triumph.rc \
+    device/motorola/triumph/prebuilt/ueventd.triumph.rc:root/ueventd.triumph.rc
+    
+# Triumph Prebuilt Files
+PRODUCT_COPY_FILES += \
+    device/motorola/triumph/prebuilt/08hostapd:/system/etc/init.d/08hostapd \
+    device/motorola/triumph/prebuilt/100complete:/system/etc/init.d/100complete 
+    
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -236,3 +197,9 @@ PRODUCT_DEVICE := triumph
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := WX435
 PRODUCT_MANUFACTURER := Motorola
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.def.agps.mode=2 \
+    ro.ril.def.agps.feature=1 \
+    ro.com.google.locationfeatures=1 \
+    persist.sys.usb.config=mass_storage \
+    debug.camcorder.disablemeta=1

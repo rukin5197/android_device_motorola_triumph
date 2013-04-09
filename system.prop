@@ -20,6 +20,7 @@ persist.rild.nitz_short_ons_3=
 # DEVICE_PROVISIONED=1
 debug.sf.hw=1
 ro.dev.dmm=1
+mobiledata.interfaces=rmnet0
 
 #
 # system props for the cne module
@@ -45,6 +46,9 @@ ro.telephony.ecclist=08,000,110,112,118,119,911,999
 ro.telephony.num.auto.hyphen=true
 ro.telephony.gsm.spn.shortname=true
 ro.cdma.home.operator.numeric=310053
+
+# Brightness scaling of the button backlight
+persist.sys.button_brightness=100
 
 wifi.interface=wlan0
 wlan.driver.status=ok
