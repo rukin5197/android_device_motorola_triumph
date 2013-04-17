@@ -66,6 +66,8 @@ windowsmgr.max_events_per_sec=150
 
 #system props for the MM modules
 media.stagefright.enable-player=true
+media.stagefright.enable-meta=false
+media.stagefright.enable-scan=true
 media.stagefright.enable-http=true
 media.stagefright.enable-fma2dp=false
 media.stagefright.enable-aac=true

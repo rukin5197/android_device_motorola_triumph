@@ -26,6 +26,47 @@ $(call inherit-product-if-exists, vendor/motorola/triumph/triumph-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/triumph/overlay
 
+
+#HDMID
+HDMID := hdmid
+
+#KERNEL_TESTS
+KERNEL_TESTS := mm-audio-native-test
+
+#LIBGENLOCK
+LIBGENLOCK := libgenlock
+
+#OPENCORE
+OPENCORE := libomx_aacdec_sharedlibrary
+OPENCORE += libomx_amrdec_sharedlibrary
+OPENCORE += libomx_amrenc_sharedlibrary
+OPENCORE += libomx_avcdec_sharedlibrary
+OPENCORE += libomx_m4vdec_sharedlibrary
+OPENCORE += libomx_mp3dec_sharedlibrary
+OPENCORE += libomx_sharedlibrary
+OPENCORE += libopencore_author
+OPENCORE += libopencore_common
+OPENCORE += libopencore_download
+OPENCORE += libopencore_downloadreg
+OPENCORE += libopencore_mp4local
+OPENCORE += libopencore_mp4localreg
+OPENCORE += libopencore_net_support
+OPENCORE += libopencore_player
+OPENCORE += libopencore_rtsp
+OPENCORE += libopencore_rtspreg
+OPENCORE += libpvdecoder_gsmamr
+OPENCORE += libpvplayer_engine
+OPENCORE += libpvamrwbdecoder
+OPENCORE += libpvauthorengine
+OPENCORE += libomx_amr_component_lib
+OPENCORE += pvplayer
+OPENCORE += pvplayer_engine_test
+
+PRODUCT_PACKAGES += $(HDMID)
+PRODUCT_PACKAGES += $(KERNEL_TESTS)
+PRODUCT_PACKAGES += $(LIBGENLOCK)
+PRODUCT_PACKAGES += $(OPENCORE)
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
@@ -62,7 +103,10 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x30 \
     audio.primary.msm7x30 \
     libaudioutils \
-    libtinyalsa
+    libtinyalsa \
+    libacdbloader \
+    libaudioalsa \
+     libv8
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -139,9 +183,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/base/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 

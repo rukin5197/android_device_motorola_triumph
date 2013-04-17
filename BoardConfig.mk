@@ -62,6 +62,7 @@ TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/motorola/triumph/releasetools/triumph_img_from_target_files
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/motorola/triumph/releasetools/triumph_ota_from_target_files
 
+# QCOM
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_GPS := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
@@ -80,6 +81,9 @@ COMMON_GLOBAL_CFLAGS += -DWITH_QCOM_LPA
 
 # Graphics
 BOARD_USES_ADRENO_200 := true
+    HAVE_ADRENO200_SOURCE := true
+    HAVE_ADRENO200_SC_SOURCE := true
+    HAVE_ADRENO200_FIRMWARE := true
 USE_GENLOCK := true
 BOARD_EGL_CFG := device/motorola/triumph/egl.cfg
 BOARD_OVERLAY_MINIFICATION_LIMIT := 2
@@ -94,13 +98,16 @@ TARGET_GRALLOC_USES_ASHMEM := true
 TARGET_FORCE_CPU_UPLOAD := true
 TARGET_QCOM_HDMI_OUT := true
 BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_OMX
+#COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_OMX
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 
 # HDMI
 TARGET_QCOM_HDMI_RESOLUTION_AUTO := true
+TARGET_QCOM_HDMI_OUT := true
+
 
 # Wifi
+BOARD_HAS_QCOM_WLAN := true
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION := VER_0_6_X
 BOARD_WLAN_DEVICE := libra
@@ -135,11 +142,11 @@ BOARD_GPS_LIBRARIES := libcommondefs\
   libloc_api \
   libloc_ext \
   libloc-rpc
-
+  
 # USB
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_MASS_STORAGE_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 # Recovery
 #TARGET_PREBUILT_RECOVERY_KERNEL := device/motorola/triumph/recovery_kernel
@@ -148,7 +155,7 @@ TARGET_RECOVERY_FSTAB := device/motorola/triumph/recovery.fstab
 BOARD_HDPI_RECOVERY := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_USES_MMCUTILS := true
-BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun0/file
+BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/motorola/triumph/recovery/default_recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/motorola/triumph/recovery/minui/graphics.c
 
