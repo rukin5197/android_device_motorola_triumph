@@ -17,12 +17,12 @@
 $(call inherit-product, device/motorola/triumph/device_triumph.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/liquid/config/common_phone.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/cdma.mk)
+$(call inherit-product, vendor/liquid/config/common.mk)
 
-PRODUCT_NAME := cm_triumph
+PRODUCT_NAME := liquid_triumph
 PRODUCT_BRAND := Motorola
 PRODUCT_DEVICE := triumph
 PRODUCT_MODEL := WX435
